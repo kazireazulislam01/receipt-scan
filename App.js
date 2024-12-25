@@ -1,14 +1,12 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import MainNavigation from './src/navigation/MainNavigation/MainNavigation';
 
 const App = () => {
   return (
-    <View className="bg-white flex-1 justify-center items-center">
-      <Text className="text-xl">Receipt Scan</Text>
-    </View>
+    <NavigationContainer>
+      <MainNavigation />
+    </NavigationContainer>
   );
 };
 
 export default App;
-
-const styles = StyleSheet.create({});
