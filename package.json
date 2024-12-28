@@ -14,9 +14,10 @@
     "@react-navigation/native": "^7.0.14",
     "nativewind": "2.0.11",
     "react": "18.2.0",
-    "react-native": "0.74.6",
+    "react-native": "0.74.0",
     "react-native-safe-area-context": "^5.0.0",
-    "react-native-screens": "^4.4.0"
+    "react-native-screens": "^4.4.0",
+    "react-native-svg": "^15.10.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
