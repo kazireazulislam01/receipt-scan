@@ -1,12 +1,7 @@
-import {NavigationContainer} from '@react-navigation/native';
-import MainNavigation from './src/navigation/MainNavigation/MainNavigation';
+import RootNavigation from './src/navigation';
 
 const App = () => {
-  return (
-    <NavigationContainer>
-      <MainNavigation />
-    </NavigationContainer>
-  );
+  return <RootNavigation />;
 };
 
 export default App;
