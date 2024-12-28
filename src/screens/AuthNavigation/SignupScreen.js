@@ -16,7 +16,7 @@ import {
 import {useNavigation} from '@react-navigation/native';
 import colors from 'tailwindcss/colors';
 
-const LoginScreen = () => {
+const SignupScreen = () => {
   const navigation = useNavigation();
   const [passwordVisible, setPasswordVisible] = useState(false);
   const {
@@ -26,31 +26,58 @@ const LoginScreen = () => {
   } = useForm();
 
   const onSubmit = data => {
-    console.log('Login Data:', data);
+    console.log('Sign Up Data:', data);
   };
 
   return (
     <ScrollView className="bg-white flex-1">
       <View className="mt-20 mb-16">
         <Text className="text-center text-4xl font-semibold text-[#4CAF50]">
-          Login
+          Sign Up
         </Text>
         <Text className="text-center font-medium my-2 text-black">
-          Welcome back to OCR App!
+          Create an account to get started!
         </Text>
       </View>
 
       <View className="mx-5">
         <View>
+          <Text className="text-black font-medium mb-2">Name</Text>
+          <Controller
+            control={control}
+            name="name"
+            rules={{required: 'Name is required'}}
+            render={({field: {onChange, onBlur, value}}) => (
+              <TextInput
+                className="border border-gray-300 rounded-xl px-4 py-3 mb-4"
+                placeholder="Enter your name"
+                onBlur={onBlur}
+                onChangeText={onChange}
+                value={value}
+              />
+            )}
+          />
+          {errors.name && (
+            <Text className="text-red-500 mb-2">{errors.name.message}</Text>
+          )}
+        </View>
+
+        <View>
           <Text className="text-black font-medium mb-2">Email</Text>
           <Controller
             control={control}
             name="email"
-            rules={{required: 'Email is required'}}
+            rules={{
+              required: 'Email is required',
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: 'Enter a valid email address',
+              },
+            }}
             render={({field: {onChange, onBlur, value}}) => (
               <TextInput
                 className="border border-gray-300 rounded-xl px-4 py-3 mb-4"
-                placeholder="Email your email"
+                placeholder="Enter your email"
                 onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}
@@ -63,11 +90,45 @@ const LoginScreen = () => {
         </View>
 
         <View>
-          <Text className="text-black font-medium  mb-2">Password</Text>
+          <Text className="text-black font-medium mb-2">Phone Number</Text>
+          <Controller
+            control={control}
+            name="phone"
+            rules={{
+              required: 'Phone number is required',
+              pattern: {
+                value: /^[0-9]{10}$/,
+                message: 'Enter a valid 10-digit phone number',
+              },
+            }}
+            render={({field: {onChange, onBlur, value}}) => (
+              <TextInput
+                className="border border-gray-300 rounded-xl px-4 py-3 mb-4"
+                placeholder="Enter your phone number"
+                keyboardType="numeric"
+                onBlur={onBlur}
+                onChangeText={onChange}
+                value={value}
+              />
+            )}
+          />
+          {errors.phone && (
+            <Text className="text-red-500 mb-2">{errors.phone.message}</Text>
+          )}
+        </View>
+
+        <View>
+          <Text className="text-black font-medium mb-2">Password</Text>
           <Controller
             control={control}
             name="password"
-            rules={{required: 'Password is required'}}
+            rules={{
+              required: 'Password is required',
+              minLength: {
+                value: 6,
+                message: 'Password must be at least 6 characters long',
+              },
+            }}
             render={({field: {onChange, onBlur, value}}) => (
               <View>
                 <TextInput
@@ -104,21 +165,15 @@ const LoginScreen = () => {
         </View>
 
         <TouchableOpacity
-          className="mb-4"
-          onPress={() => navigation.navigate('ForgotPassword')}>
-          <Text className="text-green-500 text-right">Forgot Password?</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          className="bg-green-500 py-3 rounded-full"
+          className="bg-green-500 py-3 rounded-full mt-4"
           onPress={handleSubmit(onSubmit)}>
-          <Text className="text-white text-center font-semibold">Login</Text>
+          <Text className="text-white text-center font-semibold">Sign Up</Text>
         </TouchableOpacity>
 
         <View className="flex-row items-center justify-between mx-3 mt-10">
           <View className="w-1/3 h-[.5px] bg-gray-400"></View>
           <View>
-            <Text className="text-black px-2 text-xs">or sign in with</Text>
+            <Text className="text-black px-2 text-xs">or sign up with</Text>
           </View>
           <View className="w-1/3 h-[.5px] bg-gray-400"></View>
         </View>
@@ -134,17 +189,15 @@ const LoginScreen = () => {
 
         <View className="flex-row justify-center items-center mb-5 ">
           <Text className="text-black font-semibold">
-            Don't have an account?
+            Already have an account?
           </Text>
-          <TouchableOpacity onPress={() => navigation.navigate('SignupScreen')}>
-            <Text className="text-green-500 font-semibold"> Register now</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
+            <Text className="text-green-500 font-semibold"> Login now</Text>
           </TouchableOpacity>
         </View>
       </View>
-
-      <View className="pb-40"></View>
     </ScrollView>
   );
 };
 
-export {LoginScreen};
+export {SignupScreen};
