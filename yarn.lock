@@ -3171,6 +3171,7 @@ __metadata:
     nativewind: 2.0.11
     prettier: 2.8.8
     react: 18.2.0
+    react-hook-form: ^7.54.2
     react-native: 0.74.0
     react-native-safe-area-context: ^5.0.0
     react-native-screens: ^4.4.0
@@ -8582,6 +8583,15 @@ __metadata:
   peerDependencies:
     react: ">=17.0.0"
   checksum: 6b4d93209dff04a1f25d9f8e0c56a9a8a80e7889e8e8267299f34449c7e41a9ab90cad24569d03dd7173b56b7496576dba68f71f1d4e5c8be72f0633023668bc
+  languageName: node
+  linkType: hard
+
+"react-hook-form@npm:^7.54.2":
+  version: 7.54.2
+  resolution: "react-hook-form@npm:7.54.2"
+  peerDependencies:
+    react: ^16.8.0 || ^17 || ^18 || ^19
+  checksum: 49a867ece9894dca82f6552e5eefd012b7db962c56a7543f9275ae0b6ec202d549973c3694e7f97436afc2396549cb8fc8777241dd660b71793547aa9c8e5686
   languageName: node
   linkType: hard
 
